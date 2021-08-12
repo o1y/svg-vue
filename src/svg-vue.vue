@@ -1,6 +1,7 @@
 <template>
     <svg
         :viewBox="svgViewBoxValues"
+        :fill="svgFillValue"
         xmlns="http://www.w3.org/2000/svg"
         v-html="svgContent"
     >
@@ -29,7 +30,9 @@ export default {
         svgViewBoxValues() {
             return this.svgString ? (/viewBox="([^"]+)"/.exec(this.svgString) || '')[1] : null;
         },
-
+        svgFillValue() {
+            return this.svgString ? (/fill="([^"]+)"/.exec(this.svgString) || '')[1] : null;
+        },
         svgContent() {
             return this.svgString ? this.svgString.replace(/^<svg[^>]*>|<\/svg>$/g, '') : null;
         }
